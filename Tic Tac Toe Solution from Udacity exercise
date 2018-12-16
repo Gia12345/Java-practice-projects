@@ -1,0 +1,31 @@
+
+  //Running the GameTest, the results in 20 scenarios pass and 3 fail - tie game cases 1, 2, and 3
+   //I have tried to recreate the failing scenarios, but I can't 
+   
+   public String checkGameWinner(char [][]grid){
+        String result = "None";
+        //Student code goes here ...
+
+        for (int i=0; i<3; i++) {
+            for (int j=0; j<3; j++) {
+                if (grid[i][j]!='-') {
+                    if (j == 0) {
+                        if (grid[i][j] == grid[i][j + 1] && grid[i][j + 1] == grid[i][j + 2]) {
+                            result = grid[i][j] + " wins";
+                        }
+                    }
+                    if (i == 0) {
+                        if ((grid[i][j] == grid[i + 1][j] && grid[i + 1][j] == grid[i + 2][j]) ||
+                                (i == j && grid[i][j] == grid[i + 1][j + 1] && grid[i + 1][j + 1] == grid[i + 2][j + 2]) ||
+                                (j == 2 && grid[i][j] == grid[i + 1][j - 1] && grid[i + 1][j - 1] == grid[i + 2][j - 2])) {
+                            result = grid[i][j] + " wins";
+                        }
+                    }
+                    if (i!=0 && j!=0 && freeSpots==0) {
+                        result = "tie";
+                    }
+                }
+            }
+        }            
+        return result;
+    }
