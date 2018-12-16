@@ -1,0 +1,25 @@
+
+import java.io.IOException;
+import java.util.Scanner;
+
+public class StringManipulation {
+
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		Scanner s = new Scanner(System.in);
+		System.out.print("Enter a word or phrase:  ");
+		String name = s.nextLine();
+		System.out.print("Here is your word or phrase backwards:  ");
+		int i=name.length() -1;
+		String backwards = "";
+		while (i != -1) {
+			backwards = backwards + Character.toString(name.charAt(i));
+			
+			i--;
+		}
+	
+		System.out.println(backwards.toLowerCase());
+
+	}
+
+}
