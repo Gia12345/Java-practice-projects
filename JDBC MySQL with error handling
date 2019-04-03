@@ -1,0 +1,43 @@
+
+//JDBC and mySQL with error handling
+//1.  Import the package
+import java.sql.*;
+
+public class DemoClass {
+
+	public static void main(String[] args) throws Exception{
+		// TODO Auto-generated method stub
+		
+		String url = "";
+		String username = "";
+		String password = "";
+		
+		//2.  Load and register driver
+//		Class.forName("com.mysql.jdbc.Driver");
+//or newer version "com.mysql.cj.jbdc.Driver"
+		
+		try {
+			//3.  Instantiate connection
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/aliens", "root", "root");
+		
+			//4.  Create the statement
+			Statement st=con.createStatement();
+		
+			//5.  Execute query
+			ResultSet rs = st.executeQuery("select * from students where id=10");
+//To insert		int success = st.executeUpdate("insert into students" + " values(7, 'Daisy Duck')");	
+			//6.  Process results
+			while (rs.next()) {
+				System.out.println(rs.getString(1) +" "+ rs.getString(2));
+			}
+		
+			//7.  Close
+			st.close();
+			con.close();
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
+	}
+
+}
